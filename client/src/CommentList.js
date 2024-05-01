@@ -10,15 +10,23 @@ const CommentList = ({ postId }) => {
     );
     setComments(res.data);
   };
+
   useEffect(() => {
     fetchComments();
   }, []);
 
   const renderedComments = Object.values(comments).map((comment) => {
-    return <li key={comment.commentId}>{comment.content}</li>;
+    return (
+      <li
+        key={comment.commentId}
+        className="list-group-item list-group-item-primary"
+      >
+        {comment.content}
+      </li>
+    );
   });
 
-  return <ul>{renderedComments}</ul>;
+  return <ul className="list-group mb-2 mt-2">{renderedComments}</ul>;
 };
 
 export default CommentList;
